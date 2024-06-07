@@ -13,10 +13,14 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Trier les événements par date décroissante
+  const sortedEvents = data?.events.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
+
   const filteredEvents = (
     (!type
-      ? data?.events
-      : data?.events.filter((event) => event.type === type )) || []
+      ? sortedEvents
+      : sortedEvents.filter((event) => event.type === type)) || []
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
@@ -26,15 +30,15 @@ const EventList = () => {
     }
     return false;
   });
+
   const changeType = (evtType) => {
-    console.log(evtType );
-    console.log(filteredEvents);
     setCurrentPage(1);
     setType(evtType);
   };
+
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
-  console.log(typeList);
+
   return (
     <>
       {error && <div>An error occured</div>}
