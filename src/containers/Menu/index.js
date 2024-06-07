@@ -9,13 +9,13 @@ const Menu = () => (
     <Logo />
     <ul>
       <li>
-        <a href="#nos-services">Nos services</a>
+        <a href="#Services">Nos services</a>
       </li>
       <li>
-        <a href="#nos-realisations">Nos réalisations</a>
+        <a href="#Realisations">Nos réalisations</a>
       </li>
       <li>
-        <a href="#notre-equipe">Notre équipe</a>
+        <a href="#Equipe">Notre équipe</a>
       </li>
     </ul>
     <Button title="contact" onClick={() => (window.document.location.hash = "#contact")}>
