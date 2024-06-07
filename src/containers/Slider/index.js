@@ -15,7 +15,7 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0));
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [byDateDesc]);
